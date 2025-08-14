@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Placeholder Images</title>
+</head>
+<body>
+    <h1>Placeholder Image Generator</h1>
+    <p>This page generates placeholder images for the Efficacious Circuits website.</p>
+    
+    <canvas id="canvas" width="400" height="300" style="border: 1px solid #ccc;"></canvas>
+    <br><br>
+    <button onclick="generatePlaceholder('PCB Manufacturing', '#007BFF')">PCB Manufacturing</button>
+    <button onclick="generatePlaceholder('Circuit Design', '#2ECC71')">Circuit Design</button>
+    <button onclick="generatePlaceholder('PCB Assembly', '#0B0F2D')">PCB Assembly</button>
+    <button onclick="generatePlaceholder('Testing & QA', '#007BFF')">Testing & QA</button>
+    <button onclick="generatePlaceholder('Consultation', '#2ECC71')">Consultation</button>
+    <button onclick="generatePlaceholder('Prototyping', '#0B0F2D')">Prototyping</button>
+    <br><br>
+    <button onclick="generateFacility()">Facility Image</button>
+    <button onclick="generateCertificate('ISO 9001:2015')">ISO Certificate</button>
+    <br><br>
+    <a id="download" style="display:none;">Download Image</a>
+
+    <script>
+        function generatePlaceholder(text, color) {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, color);
+            gradient.addColorStop(1, adjustBrightness(color, -20));
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Add circuit pattern
+            drawCircuitPattern(ctx, color);
+            
+            // Add text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Add shadow
+            ctx.shadowColor = 'rgba(0,0,0,0.5)';
+            ctx.shadowBlur = 4;
+            ctx.shadowOffsetX = 2;
+            ctx.shadowOffsetY = 2;
+            
+            ctx.fillText(text, canvas.width/2, canvas.height/2);
+            
+            // Create download link
+            createDownloadLink(text.toLowerCase().replace(/\s+/g, '-') + '.jpg');
+        }
+        
+        function generateFacility() {
+            const canvas = document.getElementById('canvas');
+            canvas.width = 600;
+            canvas.height = 400;
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Background
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#0B0F2D');
+            gradient.addColorStop(1, '#007BFF');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Add building silhouette
+            drawBuildingShape(ctx);
+            
+            // Add text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 32px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.shadowColor = 'rgba(0,0,0,0.5)';
+            ctx.shadowBlur = 4;
+            ctx.fillText('Efficacious Circuits Facility', canvas.width/2, canvas.height/2);
+            
+            createDownloadLink('facility.jpg');
+        }
+        
+        function generateCertificate(certName) {
+            const canvas = document.getElementById('canvas');
+            canvas.width = 150;
+            canvas.height = 150;
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Background
+            ctx.fillStyle = '#2ECC71';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Border
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(10, 10, canvas.width-20, canvas.height-20);
+            
+            // Add text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 14px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            const lines = certName.split(' ');
+            const lineHeight = 18;
+            const startY = canvas.height/2 - (lines.length-1) * lineHeight/2;
+            
+            lines.forEach((line, index) => {
+                ctx.fillText(line, canvas.width/2, startY + index * lineHeight);
+            });
+            
+            createDownloadLink(certName.toLowerCase().replace(/[:\s]+/g, '-') + '.jpg');
+        }
+        
+        function drawCircuitPattern(ctx, color) {
+            ctx.strokeStyle = adjustBrightness(color, 30);
+            ctx.lineWidth = 2;
+            ctx.globalAlpha = 0.3;
+            
+            // Draw circuit lines
+            for (let i = 0; i < 10; i++) {
+                ctx.beginPath();
+                ctx.moveTo(Math.random() * ctx.canvas.width, Math.random() * ctx.canvas.height);
+                ctx.lineTo(Math.random() * ctx.canvas.width, Math.random() * ctx.canvas.height);
+                ctx.stroke();
+            }
+            
+            // Draw circuit nodes
+            ctx.fillStyle = adjustBrightness(color, 50);
+            for (let i = 0; i < 15; i++) {
+                ctx.beginPath();
+                ctx.arc(Math.random() * ctx.canvas.width, Math.random() * ctx.canvas.height, 3, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+            
+            ctx.globalAlpha = 1;
+        }
+        
+        function drawBuildingShape(ctx) {
+            ctx.fillStyle = 'rgba(255,255,255,0.1)';
+            ctx.beginPath();
+            ctx.moveTo(100, ctx.canvas.height);
+            ctx.lineTo(100, 200);
+            ctx.lineTo(200, 150);
+            ctx.lineTo(400, 150);
+            ctx.lineTo(500, 200);
+            ctx.lineTo(500, ctx.canvas.height);
+            ctx.closePath();
+            ctx.fill();
+        }
+        
+        function adjustBrightness(hex, percent) {
+            const num = parseInt(hex.replace("#",""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = (num >> 16) + amt;
+            const G = (num >> 8 & 0x00FF) + amt;
+            const B = (num & 0x0000FF) + amt;
+            return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 +
+                (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255))
+                .toString(16).slice(1);
+        }
+        
+        function createDownloadLink(filename) {
+            const canvas = document.getElementById('canvas');
+            const link = document.getElementById('download');
+            
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                link.href = url;
+                link.download = filename;
+                link.textContent = `Download ${filename}`;
+                link.style.display = 'inline-block';
+                link.style.padding = '10px';
+                link.style.background = '#007BFF';
+                link.style.color = 'white';
+                link.style.textDecoration = 'none';
+                link.style.borderRadius = '5px';
+                link.style.marginTop = '10px';
+            }, 'image/jpeg', 0.9);
+        }
+    </script>
+</body>
+</html>

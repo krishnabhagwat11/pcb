@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initInquiryButton();
     initBackToTop();
     initNewsletterForm();
+    initHeroCarousel();
 });
 
 // Navigation Functionality
@@ -524,6 +525,146 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const style = document.createElement('style');
     style.textContent = reducedMotionCSS;
     document.head.appendChild(style);
+}
+
+// Hero Carousel Functionality
+function initHeroCarousel() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    let currentSlide = 0;
+    let isAnimating = false;
+    let autoSlideInterval;
+    
+    // Start auto-slide
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            if (!isAnimating) {
+                nextSlide();
+            }
+        }, 10000);
+    }
+    
+    // Stop auto-slide
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+    
+    // Go to specific slide
+    function goToSlide(slideIndex) {
+        if (isAnimating || slideIndex === currentSlide) return;
+        
+        isAnimating = true;
+        
+        // Remove active class from current slide and indicator
+        slides[currentSlide].classList.remove('active');
+        indicators[currentSlide].classList.remove('active');
+        
+        // Update current slide
+        currentSlide = slideIndex;
+        
+        // Add active class to new slide and indicator
+        slides[currentSlide].classList.add('active');
+        indicators[currentSlide].classList.add('active');
+        
+        // Reset animation flag
+        setTimeout(() => {
+            isAnimating = false;
+        }, 800);
+    }
+    
+    // Next slide
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        goToSlide(nextIndex);
+    }
+    
+    // Previous slide
+    function prevSlide() {
+        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        goToSlide(prevIndex);
+    }
+    
+    // Event listeners
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            stopAutoSlide();
+            nextSlide();
+            setTimeout(startAutoSlide, 8000);
+        });
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            stopAutoSlide();
+            prevSlide();
+            setTimeout(startAutoSlide, 8000);
+        });
+    }
+    
+    // Indicator click events
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            stopAutoSlide();
+            goToSlide(index);
+            setTimeout(startAutoSlide, 8000);
+        });
+    });
+    
+    // Pause on hover
+    const heroCarousel = document.querySelector('.hero-carousel');
+    if (heroCarousel) {
+        heroCarousel.addEventListener('mouseenter', stopAutoSlide);
+        heroCarousel.addEventListener('mouseleave', startAutoSlide);
+    }
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            stopAutoSlide();
+            prevSlide();
+            setTimeout(startAutoSlide, 8000);
+        } else if (e.key === 'ArrowRight') {
+            stopAutoSlide();
+            nextSlide();
+            setTimeout(startAutoSlide, 8000);
+        }
+    });
+    
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    if (heroCarousel) {
+        heroCarousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        heroCarousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+    }
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            stopAutoSlide();
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+            setTimeout(startAutoSlide, 8000);
+        }
+    }
+    
+    // Start the carousel
+    startAutoSlide();
 }
 
 // Console welcome message

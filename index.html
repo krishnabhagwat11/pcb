@@ -45,26 +45,79 @@
 
     <!-- Home Section -->
     <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <div class="hero-badge">1-32 LAYERS</div>
-                <h1 class="hero-title">PCB MANUFACTURING</h1>
-                <h2 class="hero-subtitle-main">IN INDIA FAST LEAD TIME</h2>
-                <p class="hero-subtitle">Your trusted partner in advanced PCB manufacturing & electronics solutions</p>
-                <div class="hero-features">
-                    <span class="feature-tag">✓ RIGID PCB</span>
-                    <span class="feature-tag">✓ FLEXIBLE PCB</span>
-                    <span class="feature-tag">✓ RIGID FLEXIBLE PCB</span>
-                    <span class="feature-tag">✓ BLIND & BURIED VIAS</span>
-                    <span class="feature-tag">✓ HDI, ANY-LAYER HDI</span>
-                    <span class="feature-tag">✓ ALUMINUM BASE PCB</span>
+        <div class="hero-carousel">
+            <!-- Carousel Slides -->
+            <div class="carousel-slide active" data-bg="fpga1">
+                <div class="slide-image">
+                    <img src="assets/circuit X.svg" alt="FPGA Development Board" class="fpga-board">
                 </div>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Get Instant Quote</a>
-                    <a href="#products" class="btn btn-secondary">Our Capabilities</a>
+                <div class="slide-content">
+                    <div class="slide-badge">Why FPGA Matters</div>
+                    <h1 class="slide-title">Imagine a world with limitless possibilities</h1>
+                    <p class="slide-subtitle">Where you design your computing environment with advanced PCB solutions</p>
+                    <div class="slide-buttons">
+                        <a href="#contact" class="btn btn-primary">Explore FPGA</a>
+                        <a href="#products" class="btn btn-secondary">Learn More</a>
+                    </div>
                 </div>
             </div>
+            
+            <div class="carousel-slide" data-bg="fpga2">
+                <div class="slide-image">
+                    <img src="assets/CIRCUIT Y.png" alt="VAAMAN Edge Computer" class="fpga-board">
+                </div>
+                <div class="slide-content">
+                    <div class="slide-badge">VAAMAN</div>
+                    <h1 class="slide-title">Reconfigurable Edge Computer</h1>
+                    <p class="slide-subtitle">With the power of CPU-FPGA synergy, it opens doors to AI innovation, edge computing excellence, and more</p>
+                    <div class="slide-buttons">
+                        <a href="#contact" class="btn btn-primary">Order Now</a>
+                        <a href="#products" class="btn btn-secondary">See Specs</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-slide" data-bg="pcb">
+                <div class="slide-content full-width">
+                    <div class="hero-badge">1-32 LAYERS</div>
+                    <h1 class="hero-title">PCB MANUFACTURING</h1>
+                    <h2 class="hero-subtitle-main">IN INDIA FAST LEAD TIME</h2>
+                    <p class="hero-subtitle">Your trusted partner in advanced PCB manufacturing & electronics solutions</p>
+                    <div class="hero-features">
+                        <span class="feature-tag">✓ RIGID PCB</span>
+                        <span class="feature-tag">✓ FLEXIBLE PCB</span>
+                        <span class="feature-tag">✓ RIGID FLEXIBLE PCB</span>
+                        <span class="feature-tag">✓ BLIND & BURIED VIAS</span>
+                        <span class="feature-tag">✓ HDI, ANY-LAYER HDI</span>
+                        <span class="feature-tag">✓ ALUMINUM BASE PCB</span>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">Get Instant Quote</a>
+                        <a href="#products" class="btn btn-secondary">Our Capabilities</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+            <button class="carousel-btn prev-btn" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next-btn" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <span class="indicator active" data-slide="0"></span>
+            <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+        </div>
+        
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
         </div>
         
         <!-- Achievement Marquee -->
@@ -164,7 +217,7 @@
                     </div>
                 </div>
                 <div class="pcb-illustration">
-                    <img src="assets/pcb-illustration.svg" alt="PCB Manufacturing Process" class="pcb-image">
+                    <img src="assets/circuit X.svg" alt="PCB Manufacturing Process" class="pcb-image">
                 </div>
             </div>
         </div>
@@ -181,7 +234,7 @@
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="assets/pcb-manufacturing.jpg" alt="PCB Manufacturing">
+                        <img src="assets/manufacturing.jpg" alt="PCB Manufacturing">
                         <div class="product-overlay">
                             <i class="fas fa-search-plus"></i>
                         </div>
@@ -194,7 +247,7 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="assets/circuit-design.jpg" alt="Circuit Design">
+                        <img src="assets/design.jpg" alt="Circuit Design">
                         <div class="product-overlay">
                             <i class="fas fa-search-plus"></i>
                         </div>
@@ -207,7 +260,7 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="assets/assembly.jpg" alt="PCB Assembly">
+                        <img src="assets/manufacturing.jpg" alt="PCB Assembly">
                         <div class="product-overlay">
                             <i class="fas fa-search-plus"></i>
                         </div>
@@ -233,7 +286,7 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="assets/consultation.jpg" alt="Design Consultation">
+                        <img src="assets/design.jpg" alt="Design Consultation">
                         <div class="product-overlay">
                             <i class="fas fa-search-plus"></i>
                         </div>
@@ -246,7 +299,7 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="assets/prototyping.jpg" alt="Rapid Prototyping">
+                        <img src="assets/prototyping.png" alt="Rapid Prototyping">
                         <div class="product-overlay">
                             <i class="fas fa-search-plus"></i>
                         </div>
@@ -287,7 +340,7 @@
                 </div>
                 
                 <div class="about-image">
-                    <img src="assets/facility.jpg" alt="Efficacious Circuits Facility">
+                    <img src="assets/circuit X.svg" alt="Efficacious Circuits Facility">
                 </div>
             </div>
             
@@ -348,7 +401,7 @@
             <div class="differentiators-grid">
                 <div class="differentiator">
                     <div class="diff-icon">
-                        <i class="fas fa-lightning-bolt"></i>
+                        <i class="fas fa-users"></i>
                     </div>
                     <h3>Rapid Turnaround</h3>
                     <p>Industry-leading delivery times without compromising quality standards.</p>
@@ -428,6 +481,124 @@
                         <div class="step-content">
                             <h4>Delivery</h4>
                             <p>Secure packaging and timely delivery to your location.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Policies Section -->
+    <section id="quality" class="quality-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Quality Policies</h2>
+                <p class="section-subtitle">Our commitment to excellence in every product</p>
+            </div>
+            
+            <div class="quality-content">
+                <div class="quality-process">
+                    <h3>Quality Control Process</h3>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="process-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h4>Incoming Inspection</h4>
+                            <p>Rigorous inspection of all incoming materials and components to ensure they meet our quality standards.</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="process-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h4>In-Process Control</h4>
+                            <p>Continuous monitoring and control throughout the manufacturing process with real-time quality checks.</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="process-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h4>Final Testing</h4>
+                            <p>Comprehensive final testing including electrical, functional, and visual inspections before delivery.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="certificates-section">
+                    <h3>Certifications & Standards</h3>
+                    <div class="certificates-grid">
+                        <div class="certificate-item">
+                            <img src="assets/iso-9001.jpg" alt="ISO 9001:2015 Certificate">
+                            <h4>ISO 9001:2015</h4>
+                            <p>Quality Management Systems</p>
+                        </div>
+                        
+                        <div class="certificate-item">
+                            <img src="assets/iso-14001.jpg" alt="ISO 14001 Certificate">
+                            <h4>ISO 14001</h4>
+                            <p>Environmental Management</p>
+                        </div>
+                        
+                        <div class="certificate-item">
+                            <img src="assets/rohs.jpg" alt="RoHS Compliance Certificate">
+                            <h4>RoHS Compliant</h4>
+                            <p>Restriction of Hazardous Substances</p>
+                        </div>
+                        
+                        <div class="certificate-item">
+                            <img src="assets/ul.jpg" alt="UL Listed Certificate">
+                            <h4>UL Listed</h4>
+                            <p>Underwriters Laboratories</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="commitment-banner">
+                    <div class="commitment-content">
+                        <div class="commitment-header">
+                            <div class="commitment-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3>Our Quality Commitment</h3>
+                        </div>
+                        <p>We are committed to delivering products that exceed industry standards and customer expectations. Our quality management system ensures continuous improvement and customer satisfaction.</p>
+                        
+                        <div class="quality-highlights">
+                            <div class="quality-item">
+                                <div class="quality-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="quality-text">
+                                    <h4>99.8% Quality Rate</h4>
+                                    <p>Exceptional quality standards maintained across all products</p>
+                                </div>
+                            </div>
+                            
+                            <div class="quality-item">
+                                <div class="quality-icon">
+                                    <i class="fas fa-target"></i>
+                                </div>
+                                <div class="quality-text">
+                                    <h4>Zero Defect Goal</h4>
+                                    <p>Continuous improvement towards perfection</p>
+                                </div>
+                            </div>
+                            
+                            <div class="quality-item">
+                                <div class="quality-icon">
+                                    <i class="fas fa-microscope"></i>
+                                </div>
+                                <div class="quality-text">
+                                    <h4>100% Testing</h4>
+                                    <p>Every product thoroughly tested before delivery</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="commitment-cta">
+                            <a href="#contact" class="btn btn-primary">Get Quality Quote</a>
                         </div>
                     </div>
                 </div>
@@ -523,97 +694,6 @@
                     allowfullscreen="" 
                     loading="lazy">
                 </iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quality Policies Section -->
-    <section id="quality" class="quality-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Quality Policies</h2>
-                <p class="section-subtitle">Our commitment to excellence in every product</p>
-            </div>
-            
-            <div class="quality-content">
-                <div class="quality-process">
-                    <h3>Quality Control Process</h3>
-                    <div class="process-steps">
-                        <div class="process-step">
-                            <div class="process-icon">
-                                <i class="fas fa-search"></i>
-                            </div>
-                            <h4>Incoming Inspection</h4>
-                            <p>Rigorous inspection of all incoming materials and components to ensure they meet our quality standards.</p>
-                        </div>
-                        
-                        <div class="process-step">
-                            <div class="process-icon">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                            <h4>In-Process Control</h4>
-                            <p>Continuous monitoring and control throughout the manufacturing process with real-time quality checks.</p>
-                        </div>
-                        
-                        <div class="process-step">
-                            <div class="process-icon">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <h4>Final Testing</h4>
-                            <p>Comprehensive final testing including electrical, functional, and visual inspections before delivery.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="certificates-section">
-                    <h3>Certifications & Standards</h3>
-                    <div class="certificates-grid">
-                        <div class="certificate-item">
-                            <img src="assets/iso-9001.jpg" alt="ISO 9001:2015 Certificate">
-                            <h4>ISO 9001:2015</h4>
-                            <p>Quality Management Systems</p>
-                        </div>
-                        
-                        <div class="certificate-item">
-                            <img src="assets/iso-14001.jpg" alt="ISO 14001 Certificate">
-                            <h4>ISO 14001</h4>
-                            <p>Environmental Management</p>
-                        </div>
-                        
-                        <div class="certificate-item">
-                            <img src="assets/rohs.jpg" alt="RoHS Compliance Certificate">
-                            <h4>RoHS Compliant</h4>
-                            <p>Restriction of Hazardous Substances</p>
-                        </div>
-                        
-                        <div class="certificate-item">
-                            <img src="assets/ul.jpg" alt="UL Listed Certificate">
-                            <h4>UL Listed</h4>
-                            <p>Underwriters Laboratories</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="commitment-banner">
-                    <div class="commitment-content">
-                        <h3>Our Quality Commitment</h3>
-                        <p>We are committed to delivering products that exceed industry standards and customer expectations. Our quality management system ensures continuous improvement and customer satisfaction.</p>
-                        <div class="commitment-stats">
-                            <div class="stat">
-                                <span class="stat-number">99.8%</span>
-                                <span class="stat-label">Quality Rate</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">Zero</span>
-                                <span class="stat-label">Defect Goal</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">100%</span>
-                                <span class="stat-label">Tested Products</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
